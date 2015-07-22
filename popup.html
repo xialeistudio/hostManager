@@ -1,86 +1,88 @@
 <!doctype html>
 <html ng-app="app" lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>Host Manager</title>
-    <link rel="stylesheet" href="resource/vendor/fontawesome/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="resource/css/style.css"/>
+	<meta charset="UTF-8">
+	<title>Host Manager</title>
+	<link rel="stylesheet" href="resource/vendor/fontawesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="resource/css/style.css"/>
 </head>
 <body ng-controller="RootCtrl">
 <div class="container">
-    <!--操作区-->
-    <div class="operation">
-        <div class="msg">
-            操作区
-        </div>
-        <!--上传-->
-        <button type="button" ng-click="upload()" title="上传至云端" class="btn"><i class="fa fa-cloud-upload"></i></button>
-        <!--下载-->
-        <button type="button" ng-click="download()" title="从云端下载" class="btn"><i class="fa fa-cloud-download"></i>
-        </button>
-        <!--添加分组-->
-        <button type="button" ng-click="controlGroup(true,true)" title="添加分组" class="btn"><i
-                class="fa fa-plus"></i></button>
-    </div>
-    <dl ng-repeat="group in data">
-        <dt>
-            <span class="name" ng-bind="group.name"></span>
+	<!--操作区-->
+	<div class="operation">
+		<div class="msg">
+			操作区
+		</div>
+		<button type="button" class="btn" ng-click="output()" title="写入本地"><i class="fa fa-hdd-o"></i></button>
+		<!--上传-->
+		<button type="button" ng-click="upload()" title="上传至云端" class="btn"><i class="fa fa-cloud-upload"></i></button>
+		<!--下载-->
+		<button type="button" ng-click="download()" title="从云端下载" class="btn"><i class="fa fa-cloud-download"></i>
+		</button>
+		<!--添加分组-->
+		<button type="button" ng-click="controlGroup(true,true)" title="添加分组" class="btn"><i
+			class="fa fa-plus"></i></button>
+	</div>
+	<dl ng-repeat="group in data">
+		<dt>
+			<span class="name" ng-click="toggleGroup(group)" ng-bind="group.name"></span>
             <span class="operation">
                 <button type="button" ng-click="controlRecord(group,true,true)" title="添加记录" class="btn"><i
-                        class="fa fa-plus"></i></button>
+	                class="fa fa-plus"></i></button>
         <button type="button" ng-click="editGroup(group)" title="编辑分组" class="btn"><i
-                class="fa fa-edit"></i></button>
+	        class="fa fa-edit"></i></button>
         <button type="button" ng-click="removeGroup(group)" title="删除分组" class="btn"><i
-                class="fa fa-trash"></i></button>
+	        class="fa fa-trash"></i></button>
             </span>
-        </dt>
-        <dd ng-click="toggle(record)" ng-repeat="record in group.records" ng-class="{'enabled':record.enabled}"
-            ng-bind="record.domain+' '+record.address"></dd>
-    </dl>
+		</dt>
+		<dd ng-if="group.open" ng-click="toggle(record)" ng-repeat="record in group.records|orderBy:record.domain" ng-class="{'enabled':record.enabled}"
+		    ng-bind="record.domain+' '+record.address"></dd>
+	</dl>
 </div>
 
 <div class="group-modal" ng-if="showGroupModal">
-    <form action="" name="groupModal" ng-submit="addGroup(group,$event)">
-        <div class="form-group">
-            <input type="text" ng-model="group.name" placeholder="分组名称"/>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-info">提交</button>
-            <button type="button" ng-click="controlGroup(false)" class="btn btn-warning">取消</button>
-        </div>
-    </form>
+	<form action="" name="groupModal" ng-submit="addGroup(group,$event)">
+		<div class="form-group">
+			<input type="text" ng-model="group.name" placeholder="分组名称"/>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-info">提交</button>
+			<button type="button" ng-click="controlGroup(false)" class="btn btn-warning">取消</button>
+		</div>
+	</form>
 </div>
 <div class="record-modal" ng-if="showRecordModal">
-    <form action="" name="groupModal" ng-submit="addRecord(record,$event)">
-        <div class="form-group">
-            <input type="text" ng-model="record.domain" placeholder="域名"/>
-        </div>
-        <div class="form-group">
-            <input type="text" ng-model="record.address" placeholder="ip地址"/>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-info">提交</button>
-            <button type="button" ng-click="controlRecord(null,false,true)" class="btn btn-warning">取消</button>
-        </div>
-    </form>
+	<form action="" name="groupModal" ng-submit="addRecord(record,$event)">
+		<div class="form-group">
+			<input type="text" ng-model="record.domain" placeholder="域名"/>
+		</div>
+		<div class="form-group">
+			<input type="text" ng-model="record.address" placeholder="ip地址"/>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-info">提交</button>
+			<button type="button" ng-click="controlRecord(null,false,true)" class="btn btn-warning">取消</button>
+		</div>
+	</form>
 </div>
 <div class="alert-modal">
-    <div class="msg">
-        <div class="text">操作失败！</div>
-        <div class="btns">
-            <div class="btn btn-info">确定</div>
-        </div>
-    </div>
+	<div class="msg">
+		<div class="text">操作失败！</div>
+		<div class="btns">
+			<div class="btn btn-info">确定</div>
+		</div>
+	</div>
 </div>
 <div class="confirm-modal">
-    <div class="msg">
-        <div class="text">操作失败！</div>
-        <div class="btns">
-            <div class="btn btn-info">确定</div>
-            <div class="btn btn-warning">取消</div>
-        </div>
-    </div>
+	<div class="msg">
+		<div class="text">操作失败！</div>
+		<div class="btns">
+			<div class="btn btn-info">确定</div>
+			<div class="btn btn-warning">取消</div>
+		</div>
+	</div>
 </div>
+<embed type="application/x-npapi-file-io" id="plugin"/>
 <script src="resource/vendor/angularjs/angular.js"></script>
 <script src="resource/js/app.js"></script>
 <script src="resource/js/controllers.js"></script>

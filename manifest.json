@@ -7,5 +7,24 @@
     "default_icon": "icon.png",
     "default_title": "hostManager",
     "default_popup": "popup.html"
+  },
+  "permissions": [
+    "system.cpu"
+  ],
+  "plugins": [
+    {
+      "path": "./plugins/npapi-file-io-32.dll"
+    },
+    {
+      "path": "./plugins/npapi-file-io-32.so"
+    },
+    {
+      "path": "./plugins/npapi-file-io-64.so"
+    }
+  ],
+  "requirements": {
+    "plugins": {
+      "npapi": false
+    }
   }
 }

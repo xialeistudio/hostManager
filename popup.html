@@ -35,7 +35,7 @@
 	        class="fa fa-trash"></i></button>
             </span>
 		</dt>
-		<dd ng-if="group.open" ng-click="toggle(record)" ng-repeat="record in group.records|orderBy:record.domain" ng-class="{'enabled':record.enabled}"
+		<dd ng-if="group.open" ng-click="toggle(record)" ng-repeat="record in group.records|orderBy:'domain'" ng-class="{'enabled':record.enabled}"
 		    ng-bind="record.domain+' '+record.address"></dd>
 	</dl>
 </div>

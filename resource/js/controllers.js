@@ -5,6 +5,8 @@ var module = angular.module('app.controllers', []);
 module.controller('RootCtrl', function($scope, message, $http, io) {
 	//假数据
 	$scope.data = [];
+	//读取localStorage将openid设置
+	$scope.openid = localStorage.getItem('openid') || '';
 	/**
 	 * 获取系统信息
 	 */
@@ -41,15 +43,46 @@ module.controller('RootCtrl', function($scope, message, $http, io) {
 			$scope.record = {};
 		}
 	};
+	$scope.$watch('openid', function(value) {
+		localStorage.setItem('openid', value)
+	});
 	/**
 	 * 上传至云端
 	 */
 	$scope.upload = function() {
+		if ($scope.openid == '') {
+			message.alert('请输入key');
+			return;
+		}
+		//发起远程请求
+		$http.post('http://xialeihome.sinaapp.com/host/index/upload', $scope.data, {
+			params: {
+				key: $scope.openid
+			}
+		}).success(function(data) {
+			if (data.error) {
+				message.alert(data.error);
+				return;
+			}
+			message.alert('上传完成，总共上传['+data.total+']条记录，同步['+data.async+']条记录.');
+		});
 	};
 	/**
 	 * 从云端下载
 	 */
 	$scope.download = function() {
+		if($scope.openid == ''){
+			message.alert('请输入key');
+			return;
+		}
+		$http.get('http://xialeihome.sinaapp.com/host/index/download',{
+			params:{
+				key:$scope.openid
+			}
+		}).success(function(data) {
+			$scope.data = data;
+			$scope.output();
+		});
 	};
 	/**
 	 * 输出到系统hosts

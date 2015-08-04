@@ -1,230 +1,240 @@
 * {
-  padding: 0;
-  margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 #layout {
-  .clearfix {
-    &:after {
-      content: ' ';
-      display: block;
-      clear: both;
-    }
-  }
+	.clearfix {
+		&:after {
+			content: ' ';
+			display: block;
+			clear: both;
+		}
+	}
 }
 
 .container {
-  padding: 0 8px;
-  font-size: 14px;
-  font-family: "Consolas", "Microsoft Yahei", Arial, monospace;
+	padding: 0 8px;
+	font-size: 14px;
+	font-family: "Consolas", "Microsoft Yahei", Arial, monospace;
 
-  .btn {
-    outline: 0;
-    border: 0;
-    background: none;
-    cursor: pointer;
-    font-size: 1.1em;
-    padding: 4px;
-    &:hover {
-      color: #999;
-    }
-  }
-  & > .operation {
-    #layout> .clearfix;
-    .msg {
-      float: left;
-      color: #666;
-    }
-    .btn {
-      float: right;
-      display: block;
-    }
-  }
-  dl {
-    margin: 0;
-    dt {
-      padding: 4px 0;
-      border-bottom: 1px solid #eee;
-      display: flex;
-      display: -webkit-flex;
-      align-items: center;
-      justify-content: space-between;
-      -webkit-align-items: center;
-      -webkit-justify-content: space-between;
-      .name {
-        flex: 1;
-        -webkit-flex: 1;
-      }
-      .operation {
-        .btn {
-          float: left;
-          display: block;
-        }
-      }
-    }
-    dd {
-      white-space: nowrap;
-      padding: 4px 0;
-      cursor: pointer;
-      color: #999;
-      &:hover {
-        color: #ccc;
-      }
-      &.enabled {
-        color: green;
-        &:hover {
-          color: #00AA00;
-        }
-      }
-    }
-  }
+	.btn {
+		outline: 0;
+		border: 0;
+		background: none;
+		cursor: pointer;
+		font-size: 1.1em;
+		padding: 4px;
+		&:hover {
+			color: #999;
+		}
+	}
+	& > .operation {
+		#layout> .clearfix;
+		.msg {
+			float: left;
+			color: #666;
+		}
+		.openid {
+			float: left;
+			font-family: "Consolas", "Microsoft Yahei", Arial, monospace;
+			outline: 0;
+
+			margin: 4px;
+			border-radius: 2px;
+			border: 1px solid #eee;
+			padding: 4px;
+		}
+		.btn {
+			float: right;
+			display: block;
+		}
+	}
+	dl {
+		margin: 0;
+		dt {
+			padding: 4px 0;
+			border-bottom: 1px solid #eee;
+			display: flex;
+			display: -webkit-flex;
+			align-items: center;
+			justify-content: space-between;
+			-webkit-align-items: center;
+			-webkit-justify-content: space-between;
+			.name {
+				flex: 1;
+				-webkit-flex: 1;
+			}
+			.operation {
+				.btn {
+					float: left;
+					display: block;
+				}
+			}
+		}
+		dd {
+			white-space: nowrap;
+			padding: 4px 0;
+			cursor: pointer;
+			color: #999;
+			&:hover {
+				color: #ccc;
+			}
+			&.enabled {
+				color: green;
+				&:hover {
+					color: #00AA00;
+				}
+			}
+		}
+	}
 }
 
 .modal {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, .7);
-  left: 0;
-  top: 0;
-  form {
-    background: white;
-    border-radius: 4px;
-    padding: 8px;
-    margin: 40px 8px;
-    .form-group {
-      display: flex;
-      display: -webkit-flex;
-      align-items: center;
-      justify-content: space-between;
-      -webkit-align-items: center;
-      -webkit-justify-content: space-between;
-      margin-bottom: 4px;
-      input, button {
-        outline: 0;
-        font-family: Consolas, "Microsoft Yahei", arial, sans-serif;
-        padding: 4px;
-        box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        flex: 1;
-        -webkit-flex: 1;
-        border-radius: 2px;
-        background: none;
-        border: 0;
-      }
-      input {
-        width: 100%;
-        color: #333;
-        border: 1px solid #ddd;
-      }
-      .btn-info {
-        color: #fff;
-        background-color: #5bc0de;
-        border-color: #46b8da;
-        &:hover {
-          color: #fff;
-          background-color: #31b0d5;
-          border-color: #269abc;
-        }
-      }
-      .btn-warning {
-        color: #fff;
-        background-color: #f0ad4e;
-        border-color: #eea236;
-        &:hover {
-          color: #fff;
-          background-color: #ec971f;
-          border-color: #d58512;
-        }
-      }
-      .btn ~ .btn {
-        margin-left: 8px;
-      }
-    }
-  }
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .7);
+	left: 0;
+	top: 0;
+	form {
+		background: white;
+		border-radius: 4px;
+		padding: 8px;
+		margin: 40px 8px;
+		.form-group {
+			display: flex;
+			display: -webkit-flex;
+			align-items: center;
+			justify-content: space-between;
+			-webkit-align-items: center;
+			-webkit-justify-content: space-between;
+			margin-bottom: 4px;
+			input, button {
+				outline: 0;
+				font-family: Consolas, "Microsoft Yahei", arial, sans-serif;
+				padding: 4px;
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				flex: 1;
+				-webkit-flex: 1;
+				border-radius: 2px;
+				background: none;
+				border: 0;
+			}
+			input {
+				width: 100%;
+				color: #333;
+				border: 1px solid #ddd;
+			}
+			.btn-info {
+				color: #fff;
+				background-color: #5bc0de;
+				border-color: #46b8da;
+				&:hover {
+					color: #fff;
+					background-color: #31b0d5;
+					border-color: #269abc;
+				}
+			}
+			.btn-warning {
+				color: #fff;
+				background-color: #f0ad4e;
+				border-color: #eea236;
+				&:hover {
+					color: #fff;
+					background-color: #ec971f;
+					border-color: #d58512;
+				}
+			}
+			.btn ~ .btn {
+				margin-left: 8px;
+			}
+		}
+	}
 }
 
 .group-modal {
-  .modal;
-  z-index: 2;
+	.modal;
+	z-index: 2;
 }
 
 .record-modal {
-  .modal;
-  z-index: 2;
+	.modal;
+	z-index: 2;
 }
 
 .msg-modal {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, .7);
-  left: 0;
-  top: 0;
-  z-index: 3;
-  .msg {
-    padding: 8px;
-    margin: 40px 8px;
-    background: white;
-    border-radius: 4px;
-    font-family: Consolas, "Microsoft Yahei", arial, sans-serif;
-    .text {
-      text-align: center;
-    }
-    .btns {
-      display: flex;
-      display: -webkit-flex;
-      align-items: center;
-      justify-content: space-between;
-      -webkit-align-items: center;
-      -webkit-justify-content: space-between;
-      .btn {
-        outline: 0;
-        font-family: Consolas, "Microsoft Yahei", arial, sans-serif;
-        padding: 4px;
-        box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        flex: 1;
-        -webkit-flex: 1;
-        border-radius: 2px;
-        background: none;
-        border: 0;
-        text-align: center;
-        margin-top: 8px;
-      }
-      .btn-info {
-        color: #fff;
-        background-color: #5bc0de;
-        border-color: #46b8da;
-        &:hover {
-          color: #fff;
-          background-color: #31b0d5;
-          border-color: #269abc;
-        }
-      }
-      .btn-warning {
-        color: #fff;
-        background-color: #f0ad4e;
-        border-color: #eea236;
-        &:hover {
-          color: #fff;
-          background-color: #ec971f;
-          border-color: #d58512;
-        }
-      }
-      .btn ~ .btn {
-        margin-left: 8px;
-      }
-    }
-  }
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .7);
+	left: 0;
+	top: 0;
+	z-index: 3;
+	.msg {
+		padding: 8px;
+		margin: 40px 8px;
+		background: white;
+		border-radius: 4px;
+		font-family: Consolas, "Microsoft Yahei", arial, sans-serif;
+		.text {
+			text-align: center;
+		}
+		.btns {
+			display: flex;
+			display: -webkit-flex;
+			align-items: center;
+			justify-content: space-between;
+			-webkit-align-items: center;
+			-webkit-justify-content: space-between;
+			.btn {
+				outline: 0;
+				font-family: Consolas, "Microsoft Yahei", arial, sans-serif;
+				padding: 4px;
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				flex: 1;
+				-webkit-flex: 1;
+				border-radius: 2px;
+				background: none;
+				border: 0;
+				text-align: center;
+				margin-top: 8px;
+			}
+			.btn-info {
+				color: #fff;
+				background-color: #5bc0de;
+				border-color: #46b8da;
+				&:hover {
+					color: #fff;
+					background-color: #31b0d5;
+					border-color: #269abc;
+				}
+			}
+			.btn-warning {
+				color: #fff;
+				background-color: #f0ad4e;
+				border-color: #eea236;
+				&:hover {
+					color: #fff;
+					background-color: #ec971f;
+					border-color: #d58512;
+				}
+			}
+			.btn ~ .btn {
+				margin-left: 8px;
+			}
+		}
+	}
 }
 
 .alert-modal {
-  .msg-modal;
-  display: none;
+	.msg-modal;
+	display: none;
 }
 
 .confirm-modal {
-  .msg-modal;
-  display: none;
+	.msg-modal;
+	display: none;
 }

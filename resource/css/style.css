@@ -32,6 +32,15 @@
   float: left;
   color: #666;
 }
+.container > .operation .openid {
+  float: left;
+  font-family: "Consolas", "Microsoft Yahei", Arial, monospace;
+  outline: 0;
+  margin: 4px;
+  border-radius: 2px;
+  border: 1px solid #eee;
+  padding: 4px;
+}
 .container > .operation .btn {
   float: right;
   display: block;
